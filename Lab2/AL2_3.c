@@ -47,7 +47,7 @@ void HeapSort(int *A, int length){
   }
 }
 
-void gen_inp(int n)
+void generateRandomTable(int n)
 {
     FILE *inp = fopen("2_3in.txt","w");
     int i;
@@ -56,26 +56,49 @@ void gen_inp(int n)
         fprintf(inp,"%i\n",rand()%100000);
 }
 
+void generateAscTable(int n){
+  FILE *inp = fopen("2_3in.txt","w");
+  int i;
+  for(i=0;i<n;i++)
+    fprintf(inp, "%i\n",i);
+}
+
+void generateDescTable(int n){
+  FILE *inp = fopen("2_3in.txt","w");
+  int i;
+  for(i=n-1;i>=0;i--)
+    fprintf(inp, "%i\n",i);
+}
+
+void generateSameTable(int n){
+  FILE *inp = fopen("2_3in.txt","w");
+  int i;
+  for(i=0;i<n;i++)
+    fprintf(inp, "%i\n",1);
+}
+
 //--------------------------------------------------
 
 int main() {
-  int i=1, n=0, buf=0, *A, x; //A to tablica, n to wielkosc tablicy
+  int i=1, n=0, buffor=0, *A, x;
 
   struct timespec tp0, tp1;
   double Tn,Fn;
-  for(x=2;x<330000000;x=2*x){ //n<33000
-  gen_inp(x);
-
-  FILE *heapin=fopen("2_3in.txt", "r");
-  while(fscanf(heapin, "%d", &buf)==1) {
+  for(x=2;x<330000000;x=2*x){
+  generateRandomTable(x); //(losowo)
+  //generateSameTable(x); //(a)
+  //generateAscTable(x); //(b)
+  //generateDescTable(x); //(c)
+  FILE *file=fopen("2_3in.txt", "r");
+  while(fscanf(file, "%d", &buffor)==1) {
     n++;
-  } //tutaj plik sie zamknal i trzeba go jeszcze raz otworzyc
+  }
 
   A = (int*)malloc((n+1)*sizeof(int));
-  fclose(heapin);
-  heapin=fopen("2_3in.txt", "r");
-  while(fscanf(heapin, "%d", &buf)==1) {
-    A[i]=buf;
+  fclose(file);
+  file=fopen("2_3in.txt", "r");
+  while(fscanf(file, "%d", &buffor)==1) {
+    A[i]=buffor;
     i++;
   }
 
@@ -89,7 +112,7 @@ int main() {
 
     Tn=(tp1.tv_sec+tp1.tv_nsec/MLD)-(tp0.tv_sec+tp0.tv_nsec/MLD);
     printf("x: %5d \t czas: %3.5lf \t wspolczynnik: %3.5lf\n",x,Tn, (double)Fn/Tn);
-    fclose(heapin);
+    fclose(file);
     free(A);
     }
 
