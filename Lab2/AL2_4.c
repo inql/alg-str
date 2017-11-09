@@ -77,7 +77,7 @@ int main(int argc, char* argv[]){
   fclose(in);
 
   //test buildHeap
-  /*
+  
   buildHeap(A,length);
   //after
   printf("\n");
@@ -87,7 +87,7 @@ int main(int argc, char* argv[]){
   }
   printf("%d",A[length-1]);
   printf("]");
-  */
+  
 
   //HeapSort
   HeapSort(A,length);
