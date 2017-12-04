@@ -1,7 +1,5 @@
 package com.inql;
 
-import com.sun.deploy.util.StringUtils;
-
 import java.io.*;
 
 public class AL4_7 {
@@ -57,7 +55,7 @@ public class AL4_7 {
         time = (stop-start)/(10e10);
         System.out.format("Czas dla counting sort: %.10f\n",time);
         start = System.nanoTime();
-        String[] B = RadixSort.radixSortNLetters_QS(input,al4_6.getMax());
+        String[] B = RadixSort.radixSortQS(input,al4_6.getMax());
         stop = System.nanoTime();
         time = (stop-start)/(10e10);
         System.out.format("Czas dla quick sort:    %.10f\n",time);

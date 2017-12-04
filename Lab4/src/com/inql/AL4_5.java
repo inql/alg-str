@@ -11,7 +11,7 @@ public class AL4_5 {
 
     public AL4_5(String[] preSorted) {
         this.preSorted = preSorted;
-        this.sorted = RadixSort.radixSortNLetters(preSorted,this.letter,doPrint);
+        this.sorted = RadixSort.radixSort(preSorted,this.letter,doPrint);
     }
 
     @Override

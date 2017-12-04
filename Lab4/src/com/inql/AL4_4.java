@@ -10,7 +10,7 @@ public class AL4_4 {
 
     public AL4_4(String[] preSorted) {
         this.preSorted = preSorted;
-        this.sorted = CountingSort.countingSortNLetter(preSorted,this.letter);
+        this.sorted = CountingSort.countingSort(preSorted,this.letter);
     }
 
     @Override

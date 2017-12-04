@@ -27,7 +27,7 @@ public class AL4_6 {
     }
 
     public void doSort(){
-        this.sorted = RadixSort.radixSortNLetters(this.preSorted,this.letter,this.doPrint);
+        this.sorted = RadixSort.radixSort(this.preSorted,this.letter,this.doPrint);
     }
 
     public String[] getSorted() {
