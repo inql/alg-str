@@ -2,15 +2,16 @@ package com.inql.AL5_1;
 
 
 import com.inql.Utilities;
-import com.sun.deploy.util.StringUtils;
 
 public class List1L {
 
     private Node1L head;
+    private Node1L tail;
     private String name;
 
     public List1L(String name) {
         this.head = null;
+        this.tail = head;
         this.name = name;
     }
 
@@ -18,29 +19,35 @@ public class List1L {
         return head;
     }
 
-//dodaje na początek listy
+    public Node1L getTail() {
+        return tail;
+    }
 
-    public void insert(String key){
-        Node1L item = new Node1L(key);
+    //dodaje na początek listy
+
+//    public void insert(String key){
+//        Node1L item = new Node1L(key);
+//        item.setNext(head);
+//        head = item;
+//    }
+
+
+    public void insert(Node1L item){
+        if(isEmpty())
+            tail = item;
         item.setNext(head);
         head = item;
     }
 
     //dodaje na koniec listy
 
-    public void insertAtEnd(String key){
+    public void insertAtEnd(Node1L item){
         if(head==null)
-            insert(key);
+            insert(item);
         else{
-            Node1L item = new Node1L(key);
-            Node1L next = head;
-            while(next.getNext()!=null){
-                next = next.getNext();
-            }
-            next.setNext(item);
+            tail.setNext(item);
+            tail = item;
         }
-
-
     }
 
     public void printAll(){
@@ -52,6 +59,7 @@ public class List1L {
                 item = item.getNext();
             }
             System.out.println();
+            System.out.println("head: "+getHead()+" tail: "+getTail());
         }
         else
             System.out.println("Lista jest pusta.");
@@ -86,9 +94,11 @@ public class List1L {
                 prev = current;
                 current = current.getNext();
             }
-
-            if(current == head)
+            if(current == tail)
+                tail = prev;
+            if(current == head){
                 head = head.getNext();
+            }
             else{
                 prev.setNext(current.getNext());
             }
@@ -120,7 +130,8 @@ public class List1L {
             Node1L next = head;
             while(next!=null){
                 if(result.search(next.getKey())==null){
-                    result.insertAtEnd(next.getKey());
+                    Node1L toInsert = new Node1L(next.getKey());
+                    result.insertAtEnd(toInsert);
                 }
                 next = next.getNext();
 
@@ -134,21 +145,12 @@ public class List1L {
     public List1L merge(List1L second){
 
         List1L result = new List1L("merge of "+this.name+" and "+second.name);
-        Node1L next = head;
-        //kopiujemy wszystko z pierwszej listy (tej z której wywoływana była metoda)
-        while(next!=null){
-            result.insertAtEnd(next.getKey());
-            next = next.getNext();
-        }
-        //kopiujemy wszystko z drugiej listy (argumentu)
-        next = second.getHead();
-        while(next!=null){
-            result.insertAtEnd(next.getKey());
-            next = next.getNext();
-        }
-        //usuwamy obie listy
-        this.deleteWholeList();
-        second.deleteWholeList();
+        result.head = this.head;
+        this.head = null;
+        result.tail = this.tail;
+        result.getTail().setNext(second.head);
+        second.head = null;
+        result.tail = second.tail;
 
         return result;
 

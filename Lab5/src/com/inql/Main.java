@@ -1,6 +1,7 @@
 package com.inql;
 
 import com.inql.AL5_1.List1L;
+import com.inql.AL5_1.Node1L;
 import com.inql.AL5_3.List2L;
 
 public class Main {
@@ -11,7 +12,7 @@ public class Main {
         AL5.1, AL5.2
          */
 
-        testAL5_1();
+        //testAL5_1();
 
         /*
         AL5.3, AL5.4
@@ -28,14 +29,14 @@ public class Main {
         System.out.println("Pusta lista:\n");
         list1L.printAll();
         for(int i =0; i<10; i++){
-            list1L.insertAtEnd("Word "+i);
+            list1L.insert(new Node1L("Word "+i));
         }
         System.out.println("Lista po wypełnieniu danymi:\n");
         list1L.printAll();
-        list1L.insert("Word 2");
+        list1L.insert(new Node1L("Word 2"));
         System.out.println("Lista po dodaniu słowa na początku\n");
         list1L.printAll();
-        list1L.insertAtEnd("Jestem na koncu listy");
+        list1L.insertAtEnd(new Node1L("Jestem na koncu listy"));
         System.out.println("Lista po dodaniu słowa na końcu\n");
         list1L.printAll();
         List1L copy = list1L.cpyWoRepetition();
@@ -44,9 +45,21 @@ public class Main {
         list1L.remove("Word 1");
         System.out.println("Lista po usunięciu elementu:\n");
         list1L.printAll();
+
+        list1L.remove("Jestem na koncu listy");
+        System.out.println("Lista po usunięciu elementu:\n");
+        list1L.printAll();
+
+        list1L.remove("Word 2");
+        System.out.println("Lista po usunięciu elementu:\n");
+        list1L.printAll();
+
         List1L merged = list1L.merge(copy);
         System.out.println("Połączone listy: \n");
         merged.printAll();
+
+        list1L.printAll();
+        copy.printAll();
     }
 
     public static void testAL5_3(){
