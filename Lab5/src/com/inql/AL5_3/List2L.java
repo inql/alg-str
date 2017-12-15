@@ -102,22 +102,6 @@ public class List2L {
 
         List2L result = new List2L("merge of "+name+" and "+second.name);
 
-//        Node2L toCopy = this.sentinel.getPrev();
-//        //kopiujemy wszystko z pierwszej listy
-//        while(toCopy!=this.sentinel){
-//            result.insert(toCopy.getKey());
-//            toCopy = toCopy.getPrev();
-//        }
-//        //kopiujemy wszystko z drugiej listy
-//        toCopy = second.sentinel.getPrev();
-//        while (toCopy.getPrev()!=second.sentinel){
-//            result.insert(toCopy.getKey());
-//            toCopy = toCopy.getPrev();
-//        }
-//        //usuwamy obie listy
-//        this.deleteWholeList();
-//        second.deleteWholeList();
-
         result.sentinel = this.sentinel;
         this.sentinel = null;
         second.sentinel.getNext().setPrev(result.sentinel.getPrev());
