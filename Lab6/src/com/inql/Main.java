@@ -1,9 +1,12 @@
 package com.inql;
 
+import java.io.IOException;
+
 public class Main {
 
-    public static void main(String[] args){
-        al6_2();
+    public static void main(String[] args) throws IOException {
+        //al6_2();
+        al6_3();
     }
 
     public static void al6_2(){
@@ -22,5 +25,10 @@ public class Main {
         al6_2.doTest(1600);
 
 
+    }
+
+    public static void al6_3() throws IOException {
+        AL6_3 al6_3 = new AL6_3("/home/inql/IdeaProjects/alg-str/Lab6/resources/nazwiskaASCII.txt");
+        al6_3.doTest();
     }
 }

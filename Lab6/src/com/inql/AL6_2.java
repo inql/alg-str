@@ -48,23 +48,13 @@ public class AL6_2 {
         return A;
     }
 
-    public long wordToLong(String word){
-        char[] chars = word.toCharArray();
-        int h = 0;
-        if (chars.length > 0) {
-            for (int i = 0; i < chars.length; i++) {
-                h = constant * h + chars[i];
-            }
-        }
-        return Integer.toUnsignedLong(h);
 
-    }
 
     public void doTest(int arraySize)
     {
         T = new int[arraySize];
         for(int i = 0; i<2*arraySize; i++){
-            int j = hash(wordToLong(words[i]),arraySize);
+            int j = hash(Utilities.wordToLong(words[i],constant),arraySize);
             T[j]++;
         }
         int zero_count = 0;
