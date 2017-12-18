@@ -29,6 +29,6 @@ public class Main {
 
     public static void al6_3() throws IOException {
         AL6_3 al6_3 = new AL6_3("/home/inql/IdeaProjects/alg-str/Lab6/resources/nazwiskaASCII.txt");
-        al6_3.doTest();
+        al6_3.run();
     }
 }
