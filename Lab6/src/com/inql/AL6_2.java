@@ -36,51 +36,49 @@ public class AL6_2 {
         String[] A;
         String currentLine;
         int arraySize = 0;
-        while((currentLine = bufferedReader.readLine()) != null){
+        while ((currentLine = bufferedReader.readLine()) != null) {
             arraySize++;
         }
         A = new String[arraySize];
         fileInputStream.getChannel().position(0);
         bufferedReader = new BufferedReader(new InputStreamReader(fileInputStream));
-        for(int i=0; i<arraySize; i++){
+        for (int i = 0; i < arraySize; i++) {
             A[i] = bufferedReader.readLine();
         }
         return A;
     }
 
 
-
-    public void doTest(int arraySize)
-    {
+    public void doTest(int arraySize) {
         T = new int[arraySize];
-        for(int i = 0; i<2*arraySize; i++){
-            int j = hash(Utilities.wordToLong(words[i],constant),arraySize);
+        for (int i = 0; i < 2 * arraySize; i++) {
+            int j = hash(Utilities.wordToLong(words[i], constant), arraySize);
             T[j]++;
         }
         int zero_count = 0;
         int max = 0;
         double avgNonZeroes = 0;
-        for(int value : T){
-            if(value==0)
+        for (int value : T) {
+            if (value == 0)
                 zero_count++;
-            else{
-                if(value > max)
+            else {
+                if (value > max)
                     max = value;
-                avgNonZeroes+=value;
+                avgNonZeroes += value;
             }
         }
-        avgNonZeroes/=(arraySize-zero_count);
-        System.out.println(Utilities.repeat("-",20));
-        System.out.println("Test: Rozmiar tablicy: "+arraySize);
-        System.out.println("Ilość wstawionych kluczy: "+2*arraySize);
-        System.out.println("Ilość zerowych pozycji w tablicy T: "+zero_count);
-        System.out.println("Maksymalna wartość w T: "+max);
-        System.out.println("Średnia wartość pozycji niezerowych: "+avgNonZeroes);
+        avgNonZeroes /= (arraySize - zero_count);
+        System.out.println(Utilities.repeat("-", 20));
+        System.out.println("Test: Rozmiar tablicy: " + arraySize);
+        System.out.println("Ilość wstawionych kluczy: " + 2 * arraySize);
+        System.out.println("Ilość zerowych pozycji w tablicy T: " + zero_count);
+        System.out.println("Maksymalna wartość w T: " + max);
+        System.out.println("Średnia wartość pozycji niezerowych: " + avgNonZeroes);
     }
 
-    public int hash(long k, int m){
+    public int hash(long k, int m) {
         long result = k % m;
-        return (int)result;
+        return (int) result;
     }
 
 }

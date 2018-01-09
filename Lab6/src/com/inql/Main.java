@@ -9,8 +9,8 @@ public class Main {
         al6_3();
     }
 
-    public static void al6_2(){
-        AL6_2 al6_2 = new AL6_2("/home/inql/IdeaProjects/alg-str/Lab6/resources/3700.txt",111);
+    public static void al6_2() {
+        AL6_2 al6_2 = new AL6_2("/home/inql/IdeaProjects/alg-str/Lab6/resources/3700.txt", 111);
         System.out.println("Testy korzystne:");
         al6_2.doTest(1039);
         al6_2.doTest(1187);
